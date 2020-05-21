@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JOIN</title>
+</head>
+    <body>
+    <h1>Join my website! </h1>
+    <form action="/join" method="post">
+        email : <input type="text" id = "amount" name="email"><br>
+        name : <input type="text" name="name"><br>
+        password : <input type="text" name="password"><br>
+
+        <div class="form-row">
+            <button type="button" id="sendBtn" class="button circle block orange">Login</a>
+        </div>
+    </form>
+    
+    <script>
+        $(sendBtn).click(function(){
+            var amount = $("#amount").val();
+            
+            $.ajax({
+                url:"http://localhost:3000/withdraw",
+                type : 'POST',
+                data: {
+                    amount : amount
+                },
+                success:function(data){
+                    if(data == '1'){
+                        alert('출금이 완료되었습니다');
+                        
+                    } else {
+                        alert('출금에 실패했습니다. 다시 시도해주세요');
+                    }
+                }
+
+            
+            })
+        })
+
+
+    </script>
+    
+
+    </body>
+</html>
